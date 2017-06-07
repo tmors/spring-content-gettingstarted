@@ -1,9 +1,10 @@
 package gettingstarted;
 
 import org.springframework.content.commons.repository.ContentStore;
+import org.springframework.content.commons.repository.Store;
 
 import internal.org.springframework.content.rest.annotations.ContentStoreRestResource;
 
-@ContentStoreRestResource
-public interface FileContentStore extends ContentStore<File, String> {
+@ContentStoreRestResource(path="/files")
+public interface FileContentStore extends Store<String>, ContentStore<File, String> {
 }
