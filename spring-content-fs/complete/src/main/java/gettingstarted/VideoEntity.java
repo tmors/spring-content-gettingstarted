@@ -8,6 +8,14 @@ public class VideoEntity {
     private String title;
     private String videoUrl;
 
+    public VideoEntity(String title, String videoUrl) {
+        this.title = title;
+        this.videoUrl = videoUrl;
+    }
+
+    public VideoEntity() {
+    }
+
     public String getTitle() {
         return title;
     }

@@ -18,9 +18,9 @@ public class CommonController {
 
     @RequestMapping(value="/videos/{pageId}", method = RequestMethod.GET)
     public List<VideoEntity> getCurrentVideoList(@PathVariable("pageId") Long id){
-        VideoEntity videoEntity = new VideoEntity();
+        VideoEntity videoEntity = new VideoEntity("title","url");
         List<VideoEntity>  videoEntities = new ArrayList<>();
-
+        videoEntities.add(videoEntity);
         return videoEntities;
     }
 }
