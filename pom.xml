@@ -10,7 +10,6 @@
 
 	<modules>
   		<module>./spring-content-fs/complete</module>
-  		<module>./spring-content-rest/complete</module>
   	</modules>
 
 </project>
