@@ -1,23 +1,32 @@
-package entity;
+package com.xpp.vo;
 
 /**
  * @author pengyuxiang
  * @date 2019/1/5
  */
-public class UserEntity {
+public class UserVO {
+    //用户id
     private String user_id;
-    private String user_name;
+    //用户昵称
     private String nickname;
-    private String sex;
-    private String rank;
-    private String regtime;
-    private String birthday;
-    private String description;
-    private String fans;
-    private String follows;
+    //头像
     private String face;
+    //性别
+    private String sex;
+    //级别
+    private String rank;
+    //注册时间
+    private String regtime;
+    //生日
+    private String birthday;
+    //个人签名
+    private String description;
+    //粉丝
+    private String fans;
+    //关注
+    private String follows;
+    //朋友
     private String friends;
-    private String videos;
 
     public String getUser_id() {
         return user_id;
@@ -27,20 +36,20 @@ public class UserEntity {
         this.user_id = user_id;
     }
 
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
     public String getNickname() {
         return nickname;
     }
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getFace() {
+        return face;
+    }
+
+    public void setFace(String face) {
+        this.face = face;
     }
 
     public String getSex() {
@@ -99,27 +108,11 @@ public class UserEntity {
         this.follows = follows;
     }
 
-    public String getFace() {
-        return face;
-    }
-
-    public void setFace(String face) {
-        this.face = face;
-    }
-
     public String getFriends() {
         return friends;
     }
 
     public void setFriends(String friends) {
         this.friends = friends;
-    }
-
-    public String getVideos() {
-        return videos;
-    }
-
-    public void setVideos(String videos) {
-        this.videos = videos;
     }
 }

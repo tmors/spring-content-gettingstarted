@@ -1,17 +1,15 @@
-package controller;
+package com.xpp.entity;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.springframework.content.commons.annotations.ContentId;
 import org.springframework.content.commons.annotations.ContentLength;
 
 @Entity
-public class File {
+@Table(name = "sc_file_mapper")
+public class FileMapperEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
