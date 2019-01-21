@@ -8,7 +8,7 @@ angular.module('filesApp', [])
             success(function(data, status, headers, config) {
                 if (data._embedded != undefined) {
         			filesList.files = [];
-                    angular.forEach(data._embedded.files, function(file) {
+                    angular.forEach(data._embedded.sc_file_mapper, function(file) {
                         filesList.files.push(file);
 	                });
 	            }

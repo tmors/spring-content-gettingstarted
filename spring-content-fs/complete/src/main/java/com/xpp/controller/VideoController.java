@@ -1,13 +1,11 @@
 package com.xpp.controller;
 
 import com.xpp.entity.CategoryEntity;
-import com.xpp.mapper.ICategoryService;
-import com.xpp.mapper.ICommentService;
+import com.xpp.entity.VideoInfoEntity;
+import com.xpp.mapper.*;
 import com.xpp.vo.CommentVO;
-import com.xpp.vo.VideoVO;
-import com.xpp.mapper.IUserService;
-import com.xpp.mapper.IVideoService;
-import com.xpp.vo.result.Body;
+import com.xpp.vo.HDVideoInfoVO;
+import com.xpp.vo.VideoDetailsInfoVO;
 import com.xpp.vo.result.Head;
 import com.xpp.vo.result.Result;
 import com.xpp.vo.result.ResultBean;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class VideoController {
     private IUserService iUserService;
 
     @Autowired
-    private IVideoService iVideoService;
+    private IVideoDetailsInfoService iVideoDetailsInfoService;
 
     @Autowired
     private ICommentService iCommentService;
@@ -39,26 +38,39 @@ public class VideoController {
     @Autowired
     private ICategoryService iCategoryService;
 
+    @Autowired
+    private IVideoInfoSerivce iVideoInfoSerivce;
+
     @RequestMapping(value = "/videos", method = RequestMethod.GET)
-    public List<VideoVO> getAllVideoList() {
-        List<VideoVO> videoEntities = iVideoService.getVideoList();
+    public List<VideoDetailsInfoVO> getAllVideoList() {
+        List<VideoDetailsInfoVO> videoEntities = iVideoDetailsInfoService.getVideoList();
         return videoEntities;
     }
 
     @RequestMapping(value = "/videosinfo/pages/{pageId}", method = RequestMethod.GET)
-    public List<VideoVO> getCurrentVideoList(@PathVariable("pageId") Long id) {
-        VideoVO videoVO = new VideoVO();
-        List<VideoVO> videoEntities = new ArrayList<>();
-        videoEntities.add(videoVO);
+    public List<VideoDetailsInfoVO> getCurrentVideoList(@PathVariable("pageId") Long id) {
+        VideoDetailsInfoVO videoDetailsInfoVO = new VideoDetailsInfoVO();
+        List<VideoDetailsInfoVO> videoEntities = new ArrayList<>();
+        videoEntities.add(videoDetailsInfoVO);
         return videoEntities;
     }
 
-    @RequestMapping(value = "/videoinfo/{videoId}", method = RequestMethod.GET)
-    public VideoVO getVideoInfo(@PathVariable("videoId") String cid) {
-        VideoVO videoVO = this.iVideoService.getVideoInfoByCid(cid);
-        return videoVO;
+    @RequestMapping(value = "/vdinfo/{vdid}", method = RequestMethod.GET)
+    public VideoDetailsInfoVO getVideoDetailsInfo(@PathVariable("vdid") String vdid) {
+        VideoDetailsInfoVO videoDetailsInfoVO = this.iVideoDetailsInfoService.getVideoDetailsInfoByCid(vdid);
+        return videoDetailsInfoVO;
     }
 
+    @RequestMapping(value = "/videoinfo/{videoId}", method = RequestMethod.GET)
+    public HDVideoInfoVO getVideoInfo(@PathVariable("videoId") String videoId){
+        VideoInfoEntity videoInfoEntity = this.iVideoInfoSerivce.getVideoInfoByCid(videoId);
+        HDVideoInfoVO hdVideoInfoVO = new HDVideoInfoVO();
+        HDVideoInfoVO.DurlEntity durlEntity = new HDVideoInfoVO.DurlEntity();
+        durlEntity.setUrl(videoInfoEntity.getUrl());
+        hdVideoInfoVO.addDurlEntity(durlEntity);
+
+        return hdVideoInfoVO;
+    }
 
     @RequestMapping(value = "/videocomment/{videoId}", method = RequestMethod.GET)
     public CommentVO getCommentByVideoId(@PathVariable("videoId") String cid) {
@@ -74,10 +86,10 @@ public class VideoController {
         Result result = new Result();
         for (CategoryEntity categoryEntity : categoryEntities) {
             String category = categoryEntity.getId().toString();
-            List<VideoVO> videoVOList = iVideoService.getVideoListByCategory(category);
+            List<VideoDetailsInfoVO> videoDetailsInfoVOList = iVideoDetailsInfoService.getVideoDetailsInfoListByCategory(category);
 
             ResultBean resultBean = new ResultBean();
-            resultBean.setBody(videoVOList);
+            resultBean.setBody(videoDetailsInfoVOList);
             resultBean.setHead(new Head(categoryEntity.getParam(),
                     categoryEntity.getGotoX(),
                     categoryEntity.getStyle(),

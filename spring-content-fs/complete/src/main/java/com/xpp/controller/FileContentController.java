@@ -4,9 +4,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 import com.xpp.entity.FileMapperEntity;
-import com.xpp.entity.VideoInfoEntity;
-import com.xpp.vo.VideoVO;
-import com.xpp.mapper.IVideoService;
+import com.xpp.entity.VideoDetailsInfoEntity;
+import com.xpp.mapper.IVideoDetailsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -31,7 +30,7 @@ public class FileContentController {
     private FileContentStore contentStore;
 
     @Autowired
-    private IVideoService iVideoService;
+    private IVideoDetailsInfoService iVideoDetailsInfoService;
 
     @RequestMapping(value = "/files/{fileId}", method = RequestMethod.PUT)
     public ResponseEntity<?> setContent(@PathVariable("fileId") Long id, @RequestParam("file") MultipartFile file)
@@ -39,13 +38,7 @@ public class FileContentController {
 
         Optional<FileMapperEntity> f = filesRepo.findById(id);
         if (f.isPresent()) {
-            try{
-                this.add2VideoInfo(f);
-            }
-            catch (Exception e){
-                e.printStackTrace();
-                return null;
-            }
+            this.add2VideoInfo(f);
             f.get().setMimeType(file.getContentType());
 
             contentStore.setContent(f.get(), file.getInputStream());
@@ -74,23 +67,22 @@ public class FileContentController {
 
 
     public void add2VideoInfo(Optional<FileMapperEntity> f){
-        VideoInfoEntity videoInfoEntity = new VideoInfoEntity();
-        videoInfoEntity.setId(1L);
-        videoInfoEntity.setTitle("MountainKing.avi");
-        videoInfoEntity.setUrl(URL_PREFIX + f.get().getId());
-        videoInfoEntity.setCid("1");
-        videoInfoEntity.setCover("1");
-        videoInfoEntity.setComment_id("1");
-        videoInfoEntity.setUp("1");
-        videoInfoEntity.setCategory("1");
-        videoInfoEntity.setDescription("This is a video related to Mr.Mountain ");
-        videoInfoEntity.setPlaynumber("11234");
-        videoInfoEntity.setParam("112345");
-        videoInfoEntity.setStyle("gm_av");
-        videoInfoEntity.setDanmaku("1100");
+        VideoDetailsInfoEntity videoDetailsInfoEntity = new VideoDetailsInfoEntity();
+        videoDetailsInfoEntity.setId(1L);
+        videoDetailsInfoEntity.setVideoId("1");
+        videoDetailsInfoEntity.setCover("1");
+        videoDetailsInfoEntity.setComment_id("1");
+        videoDetailsInfoEntity.setUp("1");
+        videoDetailsInfoEntity.setCategory("1");
+        videoDetailsInfoEntity.setDescription("This is a video related to Mr.Mountain ");
+        videoDetailsInfoEntity.setPlaynumber("11234");
+        videoDetailsInfoEntity.setParam("112345");
+        videoDetailsInfoEntity.setStyle("gm_av");
+        videoDetailsInfoEntity.setDanmaku("1100");
+        videoDetailsInfoEntity.setGotoX("av");
 
 
-        iVideoService.addVideo(videoInfoEntity);
+        iVideoDetailsInfoService.addVideo(videoDetailsInfoEntity);
 
     }
 

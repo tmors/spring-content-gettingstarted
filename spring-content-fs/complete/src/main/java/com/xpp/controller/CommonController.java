@@ -7,9 +7,7 @@ package com.xpp.controller;
 
 import com.xpp.entity.*;
 import com.xpp.mapper.*;
-import com.xpp.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CommonController {
     @Autowired
-    private IVideoService iVideoService;
+    private IVideoDetailsInfoService iVideoDetailsInfoService;
 
     @Autowired
     private IUserService iUserService;
@@ -36,7 +34,7 @@ public class CommonController {
         CommentInfoEntity commentInfoEntity = new CommentInfoEntity();
         PicInfoEntity picInfoEntity = new PicInfoEntity();
         UserInfoEntity userInfoEntity = new UserInfoEntity();
-        VideoInfoEntity videoInfoEntity = new VideoInfoEntity();
+        VideoDetailsInfoEntity videoDetailsInfoEntity = new VideoDetailsInfoEntity();
 
         //构造userInfo
         userInfoEntity.setId(1L);

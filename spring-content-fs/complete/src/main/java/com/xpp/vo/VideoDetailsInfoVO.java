@@ -4,7 +4,7 @@ package com.xpp.vo;
  * @author pengyuxiang
  * @date 2018/12/21
  */
-public class VideoVO {
+public class VideoDetailsInfoVO {
     //视频标题
     private String title;
     //视频图片

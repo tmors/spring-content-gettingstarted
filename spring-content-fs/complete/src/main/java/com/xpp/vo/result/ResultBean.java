@@ -1,6 +1,6 @@
 package com.xpp.vo.result;
 
-import com.xpp.vo.VideoVO;
+import com.xpp.vo.VideoDetailsInfoVO;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class ResultBean {
     private String type;
     private Head head;
-    private List<VideoVO> body;
+    private List<VideoDetailsInfoVO> body;
 
     public String getType() {
         return type;
@@ -29,11 +29,11 @@ public class ResultBean {
         this.head = head;
     }
 
-    public List<VideoVO> getBody() {
+    public List<VideoDetailsInfoVO> getBody() {
         return body;
     }
 
-    public void setBody(List<VideoVO> body) {
+    public void setBody(List<VideoDetailsInfoVO> body) {
         this.body = body;
     }
 }
