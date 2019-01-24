@@ -21,7 +21,7 @@ public interface IVideoDetailsInfoService {
             "pi.url as upface, ci.title as category, vi.goto_x, vi.playnumber as play, vi.danmaku, " +
             "vi.up, vi.description from video_details_info vi, user_info ui,pic_info pi, category_info ci " +
             "where vi.cover = pi.id and vi.up = ui.id and vi.category = #{category} and ci.id = #{category}")
-    public VideoDetailsInfoVO getVideoDetailsInfoByCid(@Param("category") String category);
+    public VideoDetailsInfoEntity getVideoDetailsInfoByCid(@Param("category") String category);
 
 
     @Select("select vi.title, vi.url, pi.url as face, vi.description, vi.category, vi.playnumber, ui.nickname as up, pi.url as upface from video_info vi, pic_info pi, user_info ui where vi.cover=pi.id and vi.up=ui.id")

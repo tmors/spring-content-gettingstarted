@@ -1,6 +1,7 @@
 package com.xpp.controller;
 
 import com.xpp.entity.CategoryEntity;
+import com.xpp.entity.VideoDetailsInfoEntity;
 import com.xpp.entity.VideoInfoEntity;
 import com.xpp.mapper.*;
 import com.xpp.vo.CommentVO;
@@ -57,7 +58,12 @@ public class VideoController {
 
     @RequestMapping(value = "/vdinfo/{vdid}", method = RequestMethod.GET)
     public VideoDetailsInfoVO getVideoDetailsInfo(@PathVariable("vdid") String vdid) {
-        VideoDetailsInfoVO videoDetailsInfoVO = this.iVideoDetailsInfoService.getVideoDetailsInfoByCid(vdid);
+
+        VideoDetailsInfoEntity videoDetailsInfoEntity = this.iVideoDetailsInfoService.getVideoDetailsInfoByCid(vdid);
+        VideoDetailsInfoVO videoDetailsInfoVO = new VideoDetailsInfoVO();
+        VideoDetailsInfoVO.DataBean.PagesBean pagesBean = new VideoDetailsInfoVO.DataBean.PagesBean();
+        pagesBean.setCid(Integer.valueOf(videoDetailsInfoEntity.getParam()));
+        videoDetailsInfoVO.getData().getPages().add(pagesBean);
         return videoDetailsInfoVO;
     }
 
