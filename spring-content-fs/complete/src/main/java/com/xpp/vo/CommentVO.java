@@ -1,69 +1,389 @@
 package com.xpp.vo;
 
+import java.util.ArrayList;
+
 /**
  * @author pengyuxiang
  * @date 2019/1/12
  */
 public class CommentVO {
-    //用户id
-    private String id;
-    //昵称
-    private String nickname;
-    //用户头像
-    private String face;
-    //层数
-    private String lvl_num;
-    //评论id
-    private String comment_id;
-    //评论内容
-    private String content;
+    private int owner;
+    private int pages;
+    private boolean needCode;
+    private int isAdmin;
+    private int results;
+    private ArrayList<HotList> hotList;
+    private ArrayList<List> list;
+    private int page;
 
-    public String getId() {
-        return id;
+    public int getOwner() {
+        return owner;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setOwner(int owner) {
+        this.owner = owner;
     }
 
-    public String getNickname() {
-        return nickname;
+    public int getPages() {
+        return pages;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 
-    public String getFace() {
-        return face;
+    public boolean isNeedCode() {
+        return needCode;
     }
 
-    public void setFace(String face) {
-        this.face = face;
+    public void setNeedCode(boolean needCode) {
+        this.needCode = needCode;
     }
 
-    public String getLvl_num() {
-        return lvl_num;
+    public int getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setLvl_num(String lvl_num) {
-        this.lvl_num = lvl_num;
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public String getComment_id() {
-        return comment_id;
+    public int getResults() {
+        return results;
     }
 
-    public void setComment_id(String comment_id) {
-        this.comment_id = comment_id;
+    public void setResults(int results) {
+        this.results = results;
     }
 
-
-    public String getContent() {
-        return content;
+    public ArrayList<HotList> getHotList() {
+        return hotList;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setHotList(ArrayList<HotList> hotList) {
+        this.hotList = hotList;
     }
+
+    public ArrayList<List> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<List> list) {
+        this.list = list;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public class HotList {
+        private String face;
+        private int mid;
+        private String sex;
+        private int isgood;
+        private int adCheck;
+        private String nick;
+        private String create_at;
+        private int rank;
+        private int good;
+        private LevelInfo level_info;
+        private int lv;
+        private String fbid;
+        private int reply_count;
+        private String msg;
+        private int create;
+        private String device;
+
+        public String getFace() {
+            return face;
+        }
+
+        public void setFace(String face) {
+            this.face = face;
+        }
+
+        public int getMid() {
+            return mid;
+        }
+
+        public void setMid(int mid) {
+            this.mid = mid;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
+        }
+
+        public int getIsgood() {
+            return isgood;
+        }
+
+        public void setIsgood(int isgood) {
+            this.isgood = isgood;
+        }
+
+        public int getAdCheck() {
+            return adCheck;
+        }
+
+        public void setAdCheck(int adCheck) {
+            this.adCheck = adCheck;
+        }
+
+        public String getNick() {
+            return nick;
+        }
+
+        public void setNick(String nick) {
+            this.nick = nick;
+        }
+
+        public String getCreate_at() {
+            return create_at;
+        }
+
+        public void setCreate_at(String create_at) {
+            this.create_at = create_at;
+        }
+
+        public int getRank() {
+            return rank;
+        }
+
+        public void setRank(int rank) {
+            this.rank = rank;
+        }
+
+        public int getGood() {
+            return good;
+        }
+
+        public void setGood(int good) {
+            this.good = good;
+        }
+
+        public LevelInfo getLevel_info() {
+            return level_info;
+        }
+
+        public void setLevel_info(LevelInfo level_info) {
+            this.level_info = level_info;
+        }
+
+        public int getLv() {
+            return lv;
+        }
+
+        public void setLv(int lv) {
+            this.lv = lv;
+        }
+
+        public String getFbid() {
+            return fbid;
+        }
+
+        public void setFbid(String fbid) {
+            this.fbid = fbid;
+        }
+
+        public int getReply_count() {
+            return reply_count;
+        }
+
+        public void setReply_count(int reply_count) {
+            this.reply_count = reply_count;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
+
+        public int getCreate() {
+            return create;
+        }
+
+        public void setCreate(int create) {
+            this.create = create;
+        }
+
+        public String getDevice() {
+            return device;
+        }
+
+        public void setDevice(String device) {
+            this.device = device;
+        }
+    }
+
+    public class List {
+        private String face;
+        private int mid;
+        private String sex;
+        private int isgood;
+        private int adCheck;
+        private String nick;
+        private String create_at;
+        private int rank;
+        private int good;
+        private LevelInfo level_info;
+        private int lv;
+        private String fbid;
+        private int reply_count;
+        private String msg;
+        private int create;
+        private String device;
+
+        public String getFace() {
+            return face;
+        }
+
+        public void setFace(String face) {
+            this.face = face;
+        }
+
+        public int getMid() {
+            return mid;
+        }
+
+        public void setMid(int mid) {
+            this.mid = mid;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
+        }
+
+        public int getIsgood() {
+            return isgood;
+        }
+
+        public void setIsgood(int isgood) {
+            this.isgood = isgood;
+        }
+
+        public int getAdCheck() {
+            return adCheck;
+        }
+
+        public void setAdCheck(int adCheck) {
+            this.adCheck = adCheck;
+        }
+
+        public String getNick() {
+            return nick;
+        }
+
+        public void setNick(String nick) {
+            this.nick = nick;
+        }
+
+        public String getCreate_at() {
+            return create_at;
+        }
+
+        public void setCreate_at(String create_at) {
+            this.create_at = create_at;
+        }
+
+        public int getRank() {
+            return rank;
+        }
+
+        public void setRank(int rank) {
+            this.rank = rank;
+        }
+
+        public int getGood() {
+            return good;
+        }
+
+        public void setGood(int good) {
+            this.good = good;
+        }
+
+        public LevelInfo getLevel_info() {
+            return level_info;
+        }
+
+        public void setLevel_info(LevelInfo level_info) {
+            this.level_info = level_info;
+        }
+
+        public int getLv() {
+            return lv;
+        }
+
+        public void setLv(int lv) {
+            this.lv = lv;
+        }
+
+        public String getFbid() {
+            return fbid;
+        }
+
+        public void setFbid(String fbid) {
+            this.fbid = fbid;
+        }
+
+        public int getReply_count() {
+            return reply_count;
+        }
+
+        public void setReply_count(int reply_count) {
+            this.reply_count = reply_count;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
+
+        public int getCreate() {
+            return create;
+        }
+
+        public void setCreate(int create) {
+            this.create = create;
+        }
+
+        public String getDevice() {
+            return device;
+        }
+
+        public void setDevice(String device) {
+            this.device = device;
+        }
+    }
+
+    public class LevelInfo {
+        private int current_level;
+
+        public int getCurrent_level() {
+            return current_level;
+        }
+
+        public void setCurrent_level(int current_level) {
+            this.current_level = current_level;
+        }
+    }
+
 }
