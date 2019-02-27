@@ -1,5 +1,7 @@
 package com.xpp.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
@@ -8,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "user_info")
+@Data
 public class UserInfoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +30,7 @@ public class UserInfoEntity {
     //外键face
     private String face;
     //等级
-    private String rank;
+    private Integer rank;
     //注册时间
     private String regtime;
     //出生日期
@@ -100,11 +103,11 @@ public class UserInfoEntity {
         this.face = face;
     }
 
-    public String getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(String rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 

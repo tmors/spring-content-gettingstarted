@@ -1,5 +1,7 @@
 package com.xpp.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
@@ -9,6 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "comment_info")
+@Data
 public class CommentInfoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,13 +21,36 @@ public class CommentInfoEntity {
     private String userId;
 
     @Column(name = "lvl_num")
-    private String lvlNum;
+    private Integer lvlNum;
 
     @Column(name = "comment_id")
     private String commentId;
 
     private String content;
+
     private String postman;
+
+    @Column(name = "video_id")
+    private String video_id;
+
+
+    private String create_time;
+
+    public String getVideo_id() {
+        return video_id;
+    }
+
+    public void setVideo_id(String video_id) {
+        this.video_id = video_id;
+    }
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
+    }
 
     public Long getId() {
         return id;
@@ -42,11 +68,11 @@ public class CommentInfoEntity {
         this.userId = userId;
     }
 
-    public String getLvlNum() {
+    public Integer getLvlNum() {
         return lvlNum;
     }
 
-    public void setLvlNum(String lvlNum) {
+    public void setLvlNum(Integer lvlNum) {
         this.lvlNum = lvlNum;
     }
 

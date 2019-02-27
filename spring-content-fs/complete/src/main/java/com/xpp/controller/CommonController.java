@@ -44,7 +44,7 @@ public class CommonController {
         userInfoEntity.setPasswd("MountainKing666");
         userInfoEntity.setFace("1");
         userInfoEntity.setSex("male");
-        userInfoEntity.setRank("God");
+        userInfoEntity.setRank(12);
         userInfoEntity.setRegtime("2019-01-01");
         userInfoEntity.setBirthday("2001-01-01");
         userInfoEntity.setDescription("this is Mountain King");
@@ -63,7 +63,7 @@ public class CommonController {
 
         //CommentInfo
         commentInfoEntity.setId(1L);
-        commentInfoEntity.setLvlNum("10");
+        commentInfoEntity.setLvlNum(12);
         commentInfoEntity.setCommentId("commentId");
         commentInfoEntity.setContent("MountainKing is so 6");
         commentInfoEntity.setPostman("1");

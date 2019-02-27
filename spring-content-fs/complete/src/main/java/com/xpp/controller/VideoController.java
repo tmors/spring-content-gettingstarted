@@ -1,6 +1,7 @@
 package com.xpp.controller;
 
 import com.xpp.entity.CategoryEntity;
+import com.xpp.entity.CommentDTO;
 import com.xpp.entity.VideoDetailsInfoEntity;
 import com.xpp.entity.VideoInfoEntity;
 import com.xpp.mapper.*;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +68,7 @@ public class VideoController {
     }
 
     @RequestMapping(value = "/videoinfo/{videoId}", method = RequestMethod.GET)
-    public HDVideoInfoVO getVideoInfo(@PathVariable("videoId") String videoId){
+    public HDVideoInfoVO getVideoInfo(@PathVariable("videoId") String videoId) {
         VideoInfoEntity videoInfoEntity = this.iVideoInfoSerivce.getVideoInfoByCid(videoId);
         HDVideoInfoVO hdVideoInfoVO = new HDVideoInfoVO();
         HDVideoInfoVO.DurlEntity durlEntity = new HDVideoInfoVO.DurlEntity();
@@ -78,9 +78,16 @@ public class VideoController {
         return hdVideoInfoVO;
     }
 
-    @RequestMapping(value = "/videocomment/{videoId}", method = RequestMethod.GET)
-    public CommentVO getCommentByVideoId(@PathVariable("videoId") String cid) {
-        CommentVO commentVO = this.iCommentService.getCommentByCid(cid);
+    @RequestMapping(value = "/comment/aid/{aid}", method = RequestMethod.GET)
+    public CommentVO getCommentByVideoCid(@PathVariable("aid") String aid) {
+        List<CommentDTO> commentDTOS = this.iCommentService.getCommentByAid(aid);
+
+        CommentVO commentVO = new CommentVO();
+        commentVO.setComment(new ArrayList<>());
+
+        commentDTOS.stream().forEach(item -> {
+            commentVO.addComment(item);
+        });
         return commentVO;
     }
 
@@ -108,4 +115,46 @@ public class VideoController {
         return result;
     }
 
+
+
+
+    public IUserService getiUserService() {
+        return iUserService;
+    }
+
+    public void setiUserService(IUserService iUserService) {
+        this.iUserService = iUserService;
+    }
+
+    public IVideoDetailsInfoService getiVideoDetailsInfoService() {
+        return iVideoDetailsInfoService;
+    }
+
+    public void setiVideoDetailsInfoService(IVideoDetailsInfoService iVideoDetailsInfoService) {
+        this.iVideoDetailsInfoService = iVideoDetailsInfoService;
+    }
+
+    public ICommentService getiCommentService() {
+        return iCommentService;
+    }
+
+    public void setiCommentService(ICommentService iCommentService) {
+        this.iCommentService = iCommentService;
+    }
+
+    public ICategoryService getiCategoryService() {
+        return iCategoryService;
+    }
+
+    public void setiCategoryService(ICategoryService iCategoryService) {
+        this.iCategoryService = iCategoryService;
+    }
+
+    public IVideoInfoSerivce getiVideoInfoSerivce() {
+        return iVideoInfoSerivce;
+    }
+
+    public void setiVideoInfoSerivce(IVideoInfoSerivce iVideoInfoSerivce) {
+        this.iVideoInfoSerivce = iVideoInfoSerivce;
+    }
 }

@@ -1,5 +1,7 @@
 package com.xpp.vo;
 
+import com.xpp.entity.CommentDTO;
+
 import java.util.ArrayList;
 
 /**
@@ -12,9 +14,14 @@ public class CommentVO {
     private boolean needCode;
     private int isAdmin;
     private int results;
-    private ArrayList<HotList> hotList;
-    private ArrayList<List> list;
+    private ArrayList<HotComment> hotComment;
+    private ArrayList<Comment> comment;
     private int page;
+
+
+    public void addComment(CommentDTO commentDTO){
+        this.comment.add(new Comment(commentDTO));
+    }
 
     public int getOwner() {
         return owner;
@@ -56,20 +63,20 @@ public class CommentVO {
         this.results = results;
     }
 
-    public ArrayList<HotList> getHotList() {
-        return hotList;
+    public ArrayList<HotComment> getHotComment() {
+        return hotComment;
     }
 
-    public void setHotList(ArrayList<HotList> hotList) {
-        this.hotList = hotList;
+    public void setHotComment(ArrayList<HotComment> hotComment) {
+        this.hotComment = hotComment;
     }
 
-    public ArrayList<List> getList() {
-        return list;
+    public ArrayList<Comment> getComment() {
+        return comment;
     }
 
-    public void setList(ArrayList<List> list) {
-        this.list = list;
+    public void setComment(ArrayList<Comment> comment) {
+        this.comment = comment;
     }
 
     public int getPage() {
@@ -80,7 +87,7 @@ public class CommentVO {
         this.page = page;
     }
 
-    public class HotList {
+    public class HotComment {
         private String face;
         private int mid;
         private String sex;
@@ -227,7 +234,7 @@ public class CommentVO {
         }
     }
 
-    public class List {
+    public class Comment {
         private String face;
         private int mid;
         private String sex;
@@ -244,6 +251,25 @@ public class CommentVO {
         private String msg;
         private int create;
         private String device;
+
+
+        public Comment(CommentDTO commentDTO) {
+            this.face = commentDTO.getFace();
+            this.sex = commentDTO.getSex();
+            this.nick = commentDTO.getNickname();
+            this.rank = commentDTO.getRank();
+            this.lv = commentDTO.getLv();
+            this.msg = commentDTO.getContent();
+        }
+
+        public Comment(String face, String sex, String nick, Integer rank, String msg, Integer lv) {
+            this.face = face;
+            this.sex = sex;
+            this.nick = nick;
+            this.rank = rank;
+            this.lv = lv;
+            this.msg = msg;
+        }
 
         public String getFace() {
             return face;
@@ -372,6 +398,7 @@ public class CommentVO {
         public void setDevice(String device) {
             this.device = device;
         }
+
     }
 
     public class LevelInfo {
